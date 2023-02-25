@@ -1,14 +1,6 @@
 [
   {
-    "label": "HOME",
-    "value": "Home"
-  },
-  {
-    "label": "CLIENTS",
-    "value": "Clients"
-  },
-  {
-    "label": "BACK",
-    "value": "Back"
+    "label": "ADD A NEW CLIENT",
+    "value": "ADDClient"
   }
 ]

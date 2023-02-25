@@ -41,7 +41,7 @@ function Search ({clients}) {
             {
                 results.length > 0
                 ? <div >
-                    <h2>search results</h2>
+                    <h2>Search Results:</h2>
                     {results.map((client) => (
                     <ClientTeaser key={client.id} {...client}/>
                 ))}</div>

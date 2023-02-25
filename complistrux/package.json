@@ -2,7 +2,6 @@
   "name": "complistrux",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,11 +9,19 @@
   },
   "dependencies": {
     "bootstrap": "^5.2.3",
+    "docxtemplater": "^3.34.2",
+    "file-saver": "^2.0.5",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "pizzip": "^3.1.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
+    "react-confirm-alert": "^3.0.6",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.1",
-    "reactstrap": "^9.1.6"
+    "reactstrap": "^9.1.6",
+    "require": "^2.4.20",
+    "requirejs": "^2.3.6"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

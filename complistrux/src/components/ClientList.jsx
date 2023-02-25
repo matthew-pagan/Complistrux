@@ -8,7 +8,7 @@ function ClientList ({clients}) {
     //     console.log(client_id)
     // }
 
-    console.log(clients)
+    // console.log(clients)
 
     const generateClientTeaser = () => {
         return clients.map((e) => (

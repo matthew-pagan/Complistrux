@@ -1,11 +1,13 @@
+
+
 const BASE_URL = 'http://127.0.0.1:8000/complistrux_api/';
 
-// const fetchArticleByID = async (articleID) => {
-//   const response = await fetch(`${BASE_URL}/${articleID}`);
-//   const data = await response.json();
-//   return data;
-// };
 
+const fetchClientByID = async (ID) => {
+  const response = await fetch(`${BASE_URL}${ID}`);
+  const data = await response.json();
+  return data;
+};
 
 const fetchClients = async (filters = null) => {
   const url = filters ? `${BASE_URL}?filter={"where":${filters}}` : BASE_URL;
@@ -20,23 +22,52 @@ const searchClients = async (textToSearchFor) => {
   return data;
 }
 
-// const addArticle = async (articleObject) => {
-//   const response = await fetch(`${BASE_URL}`, {
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     method: "POST",
-//     body: JSON.stringify(articleObject)
-//     }
-//   )
-//   const data = await response.json();
-//   return data;
-// }
+const addClient = async (clientObject) => {
+  const response = await fetch(`${BASE_URL}`, {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: "POST",
+    body: JSON.stringify(clientObject)
+    }
+  )
+  const data = await response.json();
+  return data;
+}
+
+const deleteClientByID = async (ID) => {
+  const response = await fetch(`${BASE_URL}${ID}`,{
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  method: "DELETE"
+}
+  )
+  const data = await response.json();
+  return data;
+};
+
+const changeClient = async (ID, clientObject) => {
+  const response = await fetch(`${BASE_URL}${ID}`, {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: "PUT",
+    body: JSON.stringify(clientObject)
+    }
+  )
+  console.log(ID)
+  console.log(clientObject)
+  const data = await response.json();
+  return data;
+}
 
 export {
-  // fetchArticleByID,
+  fetchClientByID,
   fetchClients,
   // fetchArticlesBySection,
   searchClients,
-  // addArticle
+  addClient,
+  deleteClientByID,
+  changeClient
 };

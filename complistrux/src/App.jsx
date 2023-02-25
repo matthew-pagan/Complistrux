@@ -1,10 +1,12 @@
 import './App.css';
 import { useState } from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ClientData from './data/clientdata.json'
 import AppNav from './components/AppNav';
 import HomePage from './pages/HomePage';
-
+import ClientPage from './pages/ClientPage';
+import CreateClient from './pages/CreateClientPage';
+import UpdateClient from './pages/UpdateClient';
 
 function App() {
   
@@ -28,6 +30,9 @@ function App() {
       <Router> 
         <Routes>
           <Route exact path='/' element={<HomePage />} />
+          <Route exact path='/clients/:clientID' element={<ClientPage />} />
+          <Route exact path='/sections/ADDClient/' element={<CreateClient />} />
+          <Route exact path='/clients/:clientID/update' element={<UpdateClient />} />
         </Routes>
       </Router>   
     </div>

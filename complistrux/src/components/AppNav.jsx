@@ -12,7 +12,7 @@ function AppNav (props){
     return(
         <Navbar> 
             <Navbar.Brand>
-                <img src="https://securestrux.com/wp-content/uploads/2020/10/SecureStrux-Cybersecurity-Firm-Logo.png" alt="securestruximage" width="60" />
+                <img src="https://securestrux.com/wp-content/uploads/2020/10/SecureStrux-Cybersecurity-Firm-Logo.png" alt="securestruximage" width="60"/>
                 CompliStrux
             </Navbar.Brand>
             <Nav>
@@ -23,7 +23,7 @@ function AppNav (props){
                 {
                     navItems.map(((navItem, index) => {
                         return(
-                            <Nav.Link key={index} href={`/#/sections/${navItem.value}`} onClick={() => console.log(navItem.value)}> 
+                            <Nav.Link key={index} href={`/sections/${navItem.value}`} onClick={() => console.log(navItem.value)}> 
                                 {navItem.label}
                             </Nav.Link>
                         )
