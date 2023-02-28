@@ -3,6 +3,9 @@ import ClientList from '../components/ClientList'
 import { fetchClients, searchClients } from '../api/clientsAPI'
 import { InputGroup, Input } from 'reactstrap'
 import Search from "../components/Search"
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function HomePage(props) {
   const [ clients, setClients ] = React.useState('');
@@ -31,6 +34,23 @@ function HomePage(props) {
       </InputGroup> */}
       <Search clients={clients}/>
       <h2>All Clients:</h2>
+      <Container>
+            <br></br>
+            <Row>
+                <Col lg='1'>
+                    <h5>ID:</h5>
+                </Col>
+                <Col lg ='2'>
+                  <h5>Logo:</h5>
+                </Col>
+                <Col lg='4'>
+                  <h5>Client:</h5>
+                </Col>
+                <Col lg='5'>
+                  <h5>Created:</h5>
+                </Col>
+            </Row>
+        </Container>
       <ClientList clients={clients} />
     </div>
   );

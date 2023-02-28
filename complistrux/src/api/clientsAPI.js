@@ -1,4 +1,4 @@
-
+import axios from "axios";
 
 const BASE_URL = 'http://127.0.0.1:8000/complistrux_api/';
 
@@ -22,17 +22,16 @@ const searchClients = async (textToSearchFor) => {
   return data;
 }
 
-const addClient = async (clientObject) => {
-  const response = await fetch(`${BASE_URL}`, {
+const addClient = (clientObject) => {
+  axios.post(`${BASE_URL}`, clientObject, {
     headers: {
-      'Content-Type': 'application/json'
-    },
-    method: "POST",
-    body: JSON.stringify(clientObject)
+      'content-type': 'multipart/form-data'
     }
-  )
-  const data = await response.json();
-  return data;
+  })
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => console.log(err))
 }
 
 const deleteClientByID = async (ID) => {
@@ -47,20 +46,23 @@ const deleteClientByID = async (ID) => {
   return data;
 };
 
-const changeClient = async (ID, clientObject) => {
-  const response = await fetch(`${BASE_URL}${ID}`, {
+const changeClient = (ID, clientObject) => {
+  axios.put(`${BASE_URL}${ID}`, clientObject, {
     headers: {
-      'Content-Type': 'application/json'
-    },
-    method: "PUT",
-    body: JSON.stringify(clientObject)
+      'content-type': 'multipart/form-data'
     }
-  )
-  console.log(ID)
-  console.log(clientObject)
-  const data = await response.json();
-  return data;
+  })
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => console.log(err))
 }
+
+const getDocs = async (filters=null) => {
+  const response = await fetch(`${BASE_URL}get_documents/`);
+  console.log(response)
+  return response;
+};
 
 export {
   fetchClientByID,
@@ -69,5 +71,6 @@ export {
   searchClients,
   addClient,
   deleteClientByID,
-  changeClient
+  changeClient,
+  getDocs
 };

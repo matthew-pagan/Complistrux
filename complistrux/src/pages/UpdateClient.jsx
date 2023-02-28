@@ -4,8 +4,13 @@ import { changeClient } from '../api/clientsAPI'
 import { useParams } from 'react-router-dom'
 import React from 'react'
 import { fetchClientByID } from '../api/clientsAPI'
+import axios from 'axios'
+import { type } from 'os'
+
 
 function UpdateClient(props) {
+
+  const BASE_URL = 'http://127.0.0.1:8000';
 
   const navigate = useNavigate()
   const {clientID} = useParams()
@@ -15,7 +20,7 @@ function UpdateClient(props) {
   React.useEffect(() => {
     const fetchClientAsync = async () => {
       try {
-        const clientsJson = await fetchClientByID (clientID);
+        const clientsJson = await fetchClientByID(clientID);
         setClient(clientsJson.result);
       } catch (e) {
         console.error('error fetching article: ', e);
@@ -36,6 +41,7 @@ function UpdateClient(props) {
     setFirewallSolution(clientprop.firewall_solution)
     setAvSolution(clientprop.av_solution)
     setAccessControlSolution(clientprop.access_control_solution)
+    setImage(clientprop.image)
 
 }, [clientprop.company_name])
 
@@ -48,6 +54,7 @@ function UpdateClient(props) {
   const [firewallSolution, setFirewallSolution] = useState()
   const [avSolution, setAvSolution] = useState()
   const [accessControlSolution, setAccessControlSolution] = useState()
+  const [image, setImage] = useState()
   const id = Number(clientID)
 
   const handleCompanyNameChange = (e) => setCompanyName(e.target.value)
@@ -55,22 +62,41 @@ function UpdateClient(props) {
   const handleFirewallSolutionChange = (e) => setFirewallSolution(e.target.value)
   const handleAvSolutionChange = (e) => setAvSolution(e.target.value)
   const handleAccessControlSolutionChange = (e) => setAccessControlSolution(e.target.value)
+  const handleImageChange = (e) => setImage(e.target.files[0])
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   const clientObject = {
+  //     id: Number(clientID),
+  //     company_name: companyName,
+  //     siem_solution: siemSolution,
+  //     firewall_solution: firewallSolution,
+  //     image: (image, image["name"]),
+  //     av_solution: avSolution,
+  //     access_control_solution: accessControlSolution,
+  //     created_date: new Date().toISOString(),
+  //   }
+  //   console.log(clientObject)
+  //   changeClient(clientID, clientObject)
+  //   navigate(`/clients/${clientID}`)
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const clientObject = {
-      id: Number(clientID),
-      company_name: companyName,
-      siem_solution: siemSolution,
-      firewall_solution: firewallSolution,
-      // image: client.multimedia.length ? client.multimedia[0] : null,
-      av_solution: avSolution,
-      access_control_solution: accessControlSolution,
-      created_date: new Date().toISOString(),
-    }
-    console.log(clientObject)
+    console.log(companyName)
+    console.log(siemSolution)
+    let clientObject = new FormData(); 
+      clientObject.append('company_name', companyName);
+      clientObject.append('siem_solution', siemSolution);
+      clientObject.append('firewall_solution', firewallSolution);
+      if(typeof image !== "string"){clientObject.append('image', image);
+  }
+      clientObject.append('av_solution', avSolution);
+      clientObject.append('access_control_solution', accessControlSolution);
+      clientObject.append('created_date', new Date().toISOString());
     changeClient(clientID, clientObject)
     navigate(`/clients/${clientID}`)
+    window.location.reload(false);
   }
 
 
@@ -81,6 +107,7 @@ function UpdateClient(props) {
   return(
     <>
       <h2>Update Client: {clientID}</h2>
+      <img className="image2"src={`${BASE_URL}${image}`}></img>
       {/* {errors && <h4>{JSON.stringify(errors)}</h4>} */}
       <p>{}</p>
       <form>
@@ -96,9 +123,11 @@ function UpdateClient(props) {
         <label htmlFor="avSolution">Anti-Virus Solution:</label>
         <input value={avSolution} name="avSolution" onChange={handleAvSolutionChange}></input>
         <br></br>
-        <label htmlFor="avSolution">Access Control Solution:</label>
+        <label htmlFor="acSolution">Access Control Solution:</label>
         <input value={accessControlSolution} name="accessControlSolution" onChange={handleAccessControlSolutionChange}></input>
         <br></br>
+        <label htmlFor="image">Upload Client Logo (JPEG or PNG):</label>
+        <input type="file" id="image" accept="image/png, image/jpeg"  onChange={handleImageChange}/>
         <br></br>
         <button className="btn" onClick={handleSubmit}>Submit</button>
       </form>

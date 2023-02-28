@@ -4,11 +4,14 @@ import { Media } from 'reactstrap';
 
 function Client ({ company_name, siem_solution, firewall_solution, av_solution, access_control_solution, image}){
 
+    const imageurl = `http://127.0.0.1:8000${image}`
+    console.log(image)
     return(
         <Media>
             <Media left>
-            { image && <img className="image"  src={ image }/> }
+            { image && <img className="image"  src={imageurl}/> }
             </Media>
+            <br></br>
             <Media body className="body">
             <h1>{company_name}</h1>
             <hr></hr>

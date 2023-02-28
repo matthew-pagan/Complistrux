@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Client from '../components/Client'
-import { fetchClientByID } from '../api/clientsAPI.js';
+import { fetchClientByID, getDocs } from '../api/clientsAPI.js';
 import { BrowserRouter, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { deleteClientByID } from '../api/clientsAPI.js';
@@ -9,12 +9,11 @@ import { useNavigate } from "react-router-dom"
 import { confirmAlert } from 'react-confirm-alert';
 import "react-confirm-alert/src/react-confirm-alert.css";
 import ConfirmUI from '../components/ConfirmUI';
-import generateClientDocs from '../jsscriptfile/GenerateClientDocs.jsx';
 
 function ClientPage(props) {
   const [ client, setClient ] = React.useState(null);
   const [ status, setStatus ] = React.useState('404: Client Not Found')
-  const [modalIsOpen, setModalIsOpen] = React.useState(false);
+  const [ GenDocsUrl, setGenDocsUrl] = React.useState();
 
   const {clientID} = useParams()
   const navigate = useNavigate()
@@ -34,6 +33,11 @@ function ClientPage(props) {
     }
   }, [client]);
 
+  React.useEffect(() => {
+    setGenDocsUrl(`http://127.0.0.1:8000/complistrux_api/get_documents/${clientID}`)
+
+}, [client])
+
   const handleClientDelete = () => {
     confirmAlert({
       customUI: ({ onClose }) => {
@@ -52,8 +56,10 @@ function ClientPage(props) {
   }
 
   const handleTechStackDocuments = () => {
-    generateClientDocs(client)
+    getDocs()
   }
+
+  // const GetDocURL = `http://127.0.0.1:8000/complistrux_api/get_documents/${client.id}`
 
   return (
     <div>
@@ -61,7 +67,7 @@ function ClientPage(props) {
         <span>{status}</span>
       }
       <hr></hr>
-      <button className="btn" onClick={handleTechStackDocuments}> Get Documents</button>
+      <a className="btn" href={GenDocsUrl}> Get Documents</a>
       <button className="btn" onClick={handleTechStackChange} clientprop={client}> Change Tech Stack</button>
       <button className="btn" onClick={handleClientDelete}> Delete Client</button>
     </div>

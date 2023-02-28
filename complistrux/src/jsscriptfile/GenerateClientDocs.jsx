@@ -9,13 +9,9 @@ function loadFile(url, callback) {
 }
 
     const generateClientDocs = () => {
-        const fs = require("fs");
-        const path = require("path");
 
         loadFile(
-            fs.readFileSync(
-                path.resolve(__dirname, "testprocedures.docx"),
-                "binary"),
+            '../testprocedures.docx',
             function (error, content) {
                 if (error) {
                     throw error;
