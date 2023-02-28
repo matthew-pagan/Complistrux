@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
+
 class Client(models.Model):
     company_name = models.CharField(max_length=255)
     siem_solution = models.CharField(max_length=255)
@@ -8,6 +9,8 @@ class Client(models.Model):
     av_solution = models.CharField(max_length=255)
     access_control_solution = models.CharField(max_length=255)
     created_date = models.DateTimeField(default=timezone.now)
+    image = models.ImageField(upload_to='client_images', null=True, blank=True)
+
 
     def __str__(self):
         return self.company_name
