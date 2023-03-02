@@ -137,4 +137,18 @@ button:focus-visible {
 .clientID {
   text-align: left;
 }
+
+.textalignleft {
+  text-align: left;
+}
+.btnbtn-primary {
+  font: inherit;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #80001e;
+  color: white;
+  border: 1px solid #800040;
+  text-align: left;
+}
 }

@@ -51,7 +51,7 @@ function CreateClient() {
       clientObject.append('access_control_solution', accessControlSolution);
       clientObject.append('created_date', new Date().toISOString());
     addClient(clientObject)
-    navigate('/')
+    navigate('/home')
     window.location.reload(false);
   }
   

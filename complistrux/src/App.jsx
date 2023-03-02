@@ -1,41 +1,43 @@
 import './App.css';
-import { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ClientData from './data/clientdata.json'
-import AppNav from './components/AppNav';
+import NavBar from './components/NavBar';
 import HomePage from './pages/HomePage';
 import ClientPage from './pages/ClientPage';
 import CreateClient from './pages/CreateClientPage';
 import UpdateClient from './pages/UpdateClient';
+import Home from './containers/Home';
+import Login from './containers/Login';
+import Signup from './containers/Signup';
+import Activate from './containers/Activate';
+import ResetPassword from './containers/ResetPassword';
+import ResetPasswordConfirm from './containers/ResetPasswordConfirm';
+import Layout from './hocs/Layout';
+import store from './Store';
+import { Provider } from 'react-redux';
 
 function App() {
   
-  // const[clients, setClients] = useState(ClientData.map(( client, index) => {
-  //   return {
-  //     id: index,
-  //     company_name: client['Company Name'],
-  //     siem_solution: client['Siem Solution'],
-  //     firewall_solution: client['Firewall Solution'],
-  //     // image: client.multimedia.length ? client.multimedia[0] : null,
-  //     av_solution: client['AV Solution'],
-  //     access_control_solution: client['Access Control Solution'],
-  //     created_date: client['Created Date']
-  //   }})
-  //   )
-  
-  
   return (
-    <div className="App">
-      <AppNav />
+    <Provider store={store}>
       <Router> 
-        <Routes>
-          <Route exact path='/' element={<HomePage />} />
-          <Route exact path='/clients/:clientID' element={<ClientPage />} />
-          <Route exact path='/sections/ADDClient/' element={<CreateClient />} />
-          <Route exact path='/clients/:clientID/update' element={<UpdateClient />} />
-        </Routes>
-      </Router>   
-    </div>
+        <Layout >
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path='/login' element={<Login />} />
+            <Route exact path='/signup' element={<Signup/>} />
+            <Route exact path='/activate/:uid/:token' element={<Activate />} />
+            <Route exact path='/reset-password' element={<ResetPassword />} />
+            <Route exact path='/password/reset/confirm/:uid/:token' element={<ResetPasswordConfirm />} />
+
+            <Route exact path='/home' element={<HomePage />} />
+            <Route exact path='/clients/:clientID' element={<ClientPage />} />
+            <Route exact path='/sections/addclient/' element={<CreateClient />} />
+            <Route exact path='/clients/:clientID/update' element={<UpdateClient />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </Provider>
   );
 }
 

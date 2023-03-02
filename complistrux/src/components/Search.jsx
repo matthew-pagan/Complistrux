@@ -37,6 +37,7 @@ function Search ({clients}) {
                 />
                 
             </Form>
+            <br></br>
             <div>
             {
                 results.length > 0
@@ -48,6 +49,8 @@ function Search ({clients}) {
                 : ''
             }
             </div>
+            <br></br>
+            <br></br>
         </div>
     )
 }

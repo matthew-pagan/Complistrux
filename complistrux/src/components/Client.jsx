@@ -7,22 +7,22 @@ function Client ({ company_name, siem_solution, firewall_solution, av_solution, 
     const imageurl = `http://127.0.0.1:8000${image}`
     console.log(image)
     return(
-        <Media>
-            <Media left>
-            { image && <img className="image"  src={imageurl}/> }
+        <div>
+            <Media body>
+                { image && <img className="image"  src={imageurl}/> }
             </Media>
-            <br></br>
-            <Media body className="body">
-            <h1>{company_name}</h1>
-            <hr></hr>
-            <h2>Current tech stack:</h2>
-            <p><strong>Siem Solution: </strong>{siem_solution}</p>
-            <p><strong>Firewall Solution: </strong> {firewall_solution}</p>
-            <p><strong>Anti-Virus Solution: </strong>{av_solution}</p>
-            <p><strong>Access Control Method: </strong>{access_control_solution}</p>
+            <Media>
+                <Media body className="body">
+                <h1>{company_name}</h1>
+                <hr></hr>
+                <h2>Current tech stack:</h2>
+                <p><strong>Siem Solution: </strong>{siem_solution}</p>
+                <p><strong>Firewall Solution: </strong> {firewall_solution}</p>
+                <p><strong>Anti-Virus Solution: </strong>{av_solution}</p>
+                <p><strong>Access Control Method: </strong>{access_control_solution}</p>
+                </Media>
             </Media>
-      </Media>
-
+        </div>
     )
 }
 export default Client;
