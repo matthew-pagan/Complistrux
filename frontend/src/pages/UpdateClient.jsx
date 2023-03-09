@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 
 function UpdateClient(isAuthenticated) {
 
-  const BASE_URL = 'http://127.0.0.1:8000';
+  const BASE_URL = 'http://18.220.193.144:8000';
 
   const navigate = useNavigate()
   const {clientID} = useParams()
@@ -112,8 +112,10 @@ function UpdateClient(isAuthenticated) {
         <label htmlFor="acSolution">Access Control Solution:</label>
         <input value={accessControlSolution} name="accessControlSolution" onChange={handleAccessControlSolutionChange}></input>
         <br></br>
+        <br></br>
         <label htmlFor="image">Upload Client Logo (JPEG or PNG):</label>
-        <input type="file" id="image" accept="image/png, image/jpeg"  onChange={handleImageChange}/>
+        <input className="textaligncenter" type="file" id="image" accept="image/png, image/jpeg"  onChange={handleImageChange}/>
+        <br></br>
         <br></br>
         <button className="btn" onClick={handleSubmit}>Submit</button>
       </form>

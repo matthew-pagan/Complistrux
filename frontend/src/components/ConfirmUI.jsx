@@ -14,7 +14,7 @@ function ConfirmUI(props) {
       <button className='btn'
         onClick={() => {
           deleteClientByID(props.clientID)
-          navigate('/')
+          navigate('/home')
           window.location.reload(false);
           props.onClose();
         }}

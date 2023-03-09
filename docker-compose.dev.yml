@@ -6,9 +6,16 @@
 version: "3.9"
 services:
   api:
-    build: ./backend
+    build: ./backend/complistrux
     ports:
       - "8000:8000"
+    environment:
+      - SECRET_KEY=$SECRET_KEY
+      - DEBUG=$DEBUG
+  auth_system_api:
+    build: ./backend/auth_system
+    ports:
+      - "8001:8001"
     environment:
       - SECRET_KEY=$SECRET_KEY
       - DEBUG=$DEBUG

@@ -32,7 +32,7 @@ function ClientPage(isAuthenticated) {
   }, [client]);
 
   React.useEffect(() => {
-    setGenDocsUrl(`http://127.0.0.1:8000/complistrux_api/get_documents/${clientID}`)
+    setGenDocsUrl(`http://18.220.193.144:8000/complistrux_api/get_documents/${clientID}`)
 
 }, [client])
 
@@ -64,6 +64,7 @@ function ClientPage(isAuthenticated) {
   if (isAuthenticated.isAuthenticated == true){
     return(
       <div>
+      <br></br>
       {client ? <Client {...client} /> :
         <span>{status}</span>
       }

@@ -1,7 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import NavBar from './components/NavBar';
 import HomePage from './pages/HomePage';
 import ClientPage from './pages/ClientPage';
 import CreateClient from './pages/CreateClientPage';

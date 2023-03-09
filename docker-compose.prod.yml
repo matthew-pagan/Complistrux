@@ -8,6 +8,13 @@ services:
     environment:
       - SECRET_KEY=$SECRET_KEY
       - DEBUG=$DEBUG
+  auth_system_api:
+    image: matt1821/backend-prod-auth:$NEW_VERSION 
+    ports:
+      - "8001:8001"
+    environment:
+      - SECRET_KEY=$SECRET_KEY
+      - DEBUG=$DEBUG
   nginx:
   # you'll obviously use your own account
     image: matt1821/webserver-prod:$NEW_VERSION

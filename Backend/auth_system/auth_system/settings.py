@@ -58,12 +58,16 @@ MIDDLEWARE = [
     
 ]
 
+ALLOWED_HOSTS = ['18.220.193.144', 'localhost']
+
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ORIGIN_WHITELIST = (
   'http://127.0.0.1:8000',
-  'http://127.0.0.1:7000',
-  'http://127.0.0.1:5174',
+  'http://127.0.0.1:5173',
+  'http://18.220.193.144',
+  'http://18.220.193.144:5173',
+  'http://18.220.193.144:80',
 )
 
 ROOT_URLCONF = 'auth_system.urls'
@@ -169,7 +173,7 @@ SIMPLE_JWT = {
    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
 
-DOMAIN = 'localhost:5174'
+DOMAIN = '18.220.193.144'
 SITE_NAME = 'CompliStrux'
 
 DJOSER = {

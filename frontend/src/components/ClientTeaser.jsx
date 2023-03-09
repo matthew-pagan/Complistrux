@@ -9,7 +9,7 @@ function ClientTeaser ({id, company_name, created_date, image}){
     
     const created_date_formatted = moment(created_date).format('MMMM Do YYYY, h:mm:ss a')
     // console.log(new Date().toISOString())
-    const imageurl = `http://127.0.0.1:8000${image}`
+    const imageurl = `http://18.220.193.144:8000${image}`
 
     return(
         <Container>

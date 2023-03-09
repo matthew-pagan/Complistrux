@@ -16,5 +16,9 @@ NEW_VERSION=$2
 docker buildx build --platform linux/amd64 --build-arg REACT_APP_BASE_URL=$BASE_URL -t matt1821/webserver-prod:$NEW_VERSION -f webserver/Dockerfile . --no-cache
 docker push matt1821/webserver-prod:$NEW_VERSION
 
-docker buildx build --platform linux/amd64  -t matt1821/backend-prod:$NEW_VERSION -f backend/Dockerfile ./backend --no-cache
+docker buildx build --platform linux/amd64  -t matt1821/backend-prod-auth:$NEW_VERSION -f backend/auth_system/Dockerfile ./backend/auth_system --no-cache
+docker push matt1821/backend-prod-auth:$NEW_VERSION
+
+docker buildx build --platform linux/amd64  -t matt1821/backend-prod:$NEW_VERSION -f backend/complistrux/Dockerfile ./backend/complistrux --no-cache
 docker push matt1821/backend-prod:$NEW_VERSION
+

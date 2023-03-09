@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import NavBar from "../components/NavBar";
 import { connect } from "react-redux";
 import { checkAuthenticated, load_user } from "../actions/auth";
+import Appnav from "../components/Appnav";
 
 
 const Layout = (props) => {
@@ -12,7 +12,7 @@ const Layout = (props) => {
   
   return(
     <div>
-      <NavBar />
+      <Appnav/>
       {props.children}
 
     </div>

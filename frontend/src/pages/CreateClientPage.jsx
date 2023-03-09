@@ -60,7 +60,9 @@ function CreateClient(isAuthenticated) {
       <label htmlFor="avSolution">Access Control Solution:</label>
       <input value={accessControlSolution} name="accessControlSolution" onChange={handleAccessControlSolutionChange}></input>
       <br></br>
-      <input type="file" id="image" accept="image/png, image/jpeg"  onChange={handleImageChange} required/>
+      <br></br>
+      <input type="file" id="image" accept="image/png, image/jpeg"  onChange={handleImageChange}/>
+      <br></br>
       <br></br>
       <button className="btn" onClick={handleSubmit}>Submit</button>
     </>

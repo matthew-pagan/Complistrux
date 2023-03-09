@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = 'http://127.0.0.1:8000/complistrux_api/';
+const BASE_URL = 'http://18.220.193.144:8000/complistrux_api/';
 
 
 const fetchClientByID = async (ID) => {
